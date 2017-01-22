@@ -178,11 +178,6 @@ input[type="checkbox"]{
 	transition: all 0.5s;
 	cursor: pointer;
 }
-.form__label.is-closed{
-	color: #FFF;
-	font-size: 16px;
-	bottom: 15px;
-}
 .form__input{
 	position: absolute;
 	bottom: 0;
@@ -207,10 +202,6 @@ input[type="checkbox"]{
 }
 .form__input--password{
 	background-image: url("../images/password.png");
-}
-.form__input.is-closed{
-	height: 3px;
-	background-image: none;
 }
 .form__link{
 	display: inline-block;
