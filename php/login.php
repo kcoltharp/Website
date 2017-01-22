@@ -7,11 +7,11 @@ if(empty($_POST) === false){
 
 	if(empty($username) === true || empty($password) === true){
 		$errors[] = 'You need to enter a username and password';
-	} else if(user_exists($username) === false){
+	}else if($MyDB->user_exists($username) === false){
 		$errors[] = 'We can\'t find that username. Have you registered?';
-	} else if(user_active($username) === false){
+	}else if($MyDB->user_active($username) === false){
 		$errors[] = 'You haven\'t activated your account!';
-	} else{
+	}else{
 		if(strlen($password) > 32){
 			$errors[] = 'Password too long';
 		}
@@ -19,12 +19,12 @@ if(empty($_POST) === false){
 		$login = login($username, $password);
 		if($login === false){
 			$errors[] = 'That username/password combination is incorrect';
-		} else{
+		}else{
 			$_SESSION['user_id'] = $login;
 			echo "<meta http-equiv=\"refresh\" content=\"1;URL=http://grocery.kennys-spot.org/list.php \">";
 		}
 	}
-} else{
+}else{
 	$errors[] = 'No data received';
 }
 if(empty($errors) === false){
