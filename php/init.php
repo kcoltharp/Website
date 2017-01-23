@@ -4,9 +4,8 @@ if(!isset($_SESSION)){
 }
 
 require_once 'MyPDO.php';
-require_once 'MyPDOException.php';
 
-$MyDB = new MyPDO('kenny', 'kc226975', $host);
+$MyDB = new MyPDO('kenny', 'kc226975', '127.0.0.1');
 $user_data = array();
 
 

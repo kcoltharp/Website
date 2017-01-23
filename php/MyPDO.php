@@ -1,8 +1,5 @@
 <?php
-
-use HTMLPurifier;
-
-require_once './php/htmlpurifier/HTMLPurifier.standalone.php';
+require_once 'htmlpurifier/HTMLPurifier.standalone.php';
 
 /**
  * Description of MyPDO
@@ -17,7 +14,7 @@ class MyPDO extends PDO{
 	 * @param String $host - host is preset for localhost, otherwise input IPv4 address
 	 */
 	function __construct($username, $password, $host = '127.0.0.1'){
-		set_exception_handler(array('example', 'exception_handler'));
+		@set_exception_handler(array('example', 'exception_handler'));
 		try{
 			$db = parent::__construct('mysql:host=' . $host . ';dbname=grocery;charset=utf8', $username, $password, array(
 					  PDO::ATTR_PERSISTENT => true,
@@ -25,7 +22,7 @@ class MyPDO extends PDO{
 					  PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
 			));
 			return $db;
-		}catch (MyPDOException $e){
+		}catch (PDOException $e){
 			print "<h1><center>ERROR: " . $e->getMessage() . "</center></h1><br />";
 			$this->errorLog($e->getMessage());
 			exit();
